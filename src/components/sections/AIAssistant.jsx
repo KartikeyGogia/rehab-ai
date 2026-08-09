@@ -14,7 +14,7 @@ function AIAssistant() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/ai/analyze",
+        `${import.meta.env.VITE_API_URL}/api/ai/analyze`,
         data
       );
 
@@ -36,13 +36,8 @@ function AIAssistant() {
   };
 
   return (
-    <section
-      id="ai-assistant"
-      className="px-6 py-24"
-    >
+    <section id="ai-assistant" className="px-6 py-24">
       <div className="mx-auto max-w-7xl">
-
-        {/* Heading */}
 
         <div className="text-center">
 
@@ -62,9 +57,6 @@ function AIAssistant() {
           </p>
 
         </div>
-
-
-        {/* AI Assistant */}
 
         <div className="mt-20 grid items-start gap-8 lg:grid-cols-2">
 
