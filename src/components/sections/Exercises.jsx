@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Clock3 } from "lucide-react";
 
 const categories = [
+  "All",
   "Shoulder",
   "Ankle",
   "Back",
@@ -69,7 +70,14 @@ const exercises = [
 ];
 
 function Exercises() {
-  const [activeCategory, setActiveCategory] = useState("Lower Back");
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const FilteredExercises = 
+  activeCategory === "All"
+  ? exercises
+  : exercises.filter(
+    (exercise) => exercise.category === activeCategory
+  );
 
   return (
     <section className="py-28 bg-white">
@@ -109,7 +117,7 @@ function Exercises() {
 
         {/* Cards */}
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {exercises.map((exercise) => (
+          {FilteredExercises.map((exercise) => (
             <div
               key={exercise.id}
               className="overflow-hidden rounded-3xl bg-white shadow-lg transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
